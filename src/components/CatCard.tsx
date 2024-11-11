@@ -33,7 +33,7 @@ export default function CatCard(props: CatCardProps) {
         src={props.cat.url}
       />
 
-      {props.cat.breeds.length ? (
+      {props.cat.breeds ? (
         props.cat.breeds.map((breed) => <p>{breed.name}</p>)
       ) : (
         <p>Unknown breed</p>

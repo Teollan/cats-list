@@ -33,11 +33,15 @@ export default function FavouritesPage() {
   };
 
   return (
-    <CatsList
-      cats={favourites}
-      favourites={favouriteIds}
-      onFavourite={toggleFavourite}
-      onDrop={rearrangeFavourites}
-    />
+    <>
+      {favourites && (
+        <CatsList
+          cats={favourites}
+          favourites={favouriteIds}
+          onFavourite={toggleFavourite}
+          onDrop={rearrangeFavourites}
+        />
+      )}
+    </>
   );
 }
