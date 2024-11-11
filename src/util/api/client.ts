@@ -3,6 +3,26 @@ const API_KEY =
 
 const API_BASE = "https://api.thecatapi.com/v1/";
 
-function request() {}
+async function request<T>(endpoint: string, init?: RequestInit): Promise<T> {
+  const url = API_BASE + endpoint;
+  const response = await fetch(url, init);
 
-function get<T>(endpoint: string, body: any): Promise<T> {}
+  if (!response.ok) {
+    throw new Error(`Failed request to ${url}`);
+  }
+
+  return response.json();
+}
+
+function get<T>(endpoint: string): Promise<T> {
+  return request(endpoint, {
+    method: "GET",
+    headers: {
+      "x-api-key": API_KEY,
+    },
+  });
+}
+
+export const client = {
+  get,
+};
